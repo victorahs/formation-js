@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script>
+
+        function findName() {
+            var tab_personnes = [
+                { nom: 'anatole', age: 19 },
+                { nom: 'bernard', age: 45 },
+                { nom: 'christophe', age: 34 },
+                { nom: 'dominique', age: 55 },
+                { nom: 'franck', age: 28 },
+                { nom: 'lucas', age: 78 },
+                { nom: "georges", age: 78 },
+                { nom: 'madeleine', age: 12 },
+                { nom: 'pierre', age: 30 }
+            ]
+
+            var reponse = "";
+            var caract = document.getElementById('monInput').value;
+
+            
+            for (var i = 0; i < tab_personnes.length; i++) {
+                    
+                   console.log(tab_personnes[i]); 
+                
+
+                if (tab_personnes[i].nom.indexOf(caract) != -1) {
+
+                    reponse += tab_personnes[i].nom + " ";
+
+                }
+
+            }
+
+
+            alert(reponse);
+            
+        }
+
+   
+    </script>
+</head>
+
+<body>
+    <input id="monInput" type="text" />
+    <button onclick='findName()'>Quel age as-tu ?</button>
+</body>
+
+</html>
