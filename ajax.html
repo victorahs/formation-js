@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <script>
+        const req = new XMLHttpRequest();
+
+        req.onreadystatechange = function (event) {
+            // XMLHttpRequest.DONE === 4
+            if (this.readyState === XMLHttpRequest.DONE) {
+                if (this.status === 200) {
+                    console.log("Réponse reçue: %s", this.responseText);
+                    var reponse = this.responseText;
+
+                    parseJson(reponse);
+
+                } else {
+                    console.log("Status de la réponse: %d (%s)", this.status, this.statusText);
+                }
+            }
+        };
+
+
+
+        req.open('GET', 'http://loisirs-web-backend.cleverapps.io/users', true);
+        req.send(null);
+
+        function parseJson(r) {
+
+            monJson = JSON.parse(r);
+            console.log(monJson);
+            monTableau = "<table border = '1'><tr>";
+            monJson.forEach(personne => {
+
+                monTableau += "<td>" + personne.id + "</td>" + "<td>" + personne.name + "</td>" + "<td>" + personne.password + "</td></tr>"
+
+            }
+
+
+            );
+
+            monTableau += "</table>"
+
+            document.write(monTableau);
+
+
+        }
+
+
+    </script>
+</body>
+
+</html>
